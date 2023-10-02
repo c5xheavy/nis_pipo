@@ -17,3 +17,6 @@ jobs:
 
       - name: Test the project
         run: ./build/test
+
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
