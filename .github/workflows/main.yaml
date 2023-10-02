@@ -14,3 +14,6 @@ jobs:
 
       - name: Build the project
         run: cmake --build build
+
+      - name: Test the project
+        run: ./build/test
