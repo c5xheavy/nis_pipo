@@ -42,5 +42,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            mv /src/wishlist/bin/wishlist/build/hello /src/wishlist/bin/wishlist
+            mv /srv/wishlist/bin/wishlist/build/hello /srv/wishlist/bin/wishlist
             sudo systemcrl restart wishlist
