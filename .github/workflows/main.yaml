@@ -25,3 +25,12 @@ jobs:
           path: |
             ./build/hello
             ./build/test
+
+      - name: Copy production artifact to the server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          source: "./build/hello"
+          target: "/srv/wishlist/bin/wishlist"
