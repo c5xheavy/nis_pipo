@@ -34,3 +34,13 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           source: "./build/hello"
           target: "/srv/wishlist/bin/wishlist"
+
+      - name: executing remote ssh commands
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            mv /src/wishlist/bin/wishlist/build/hello /src/wishlist/bin/wishlist
+            sudo systemcrl restart wishlist
