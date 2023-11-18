@@ -44,4 +44,3 @@ class Cppunit { public:
 };
 
 #endif // CPPUNIT_H
-
