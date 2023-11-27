@@ -54,6 +54,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           source: "./build/hello"
           target: "/srv/wishlist/bin"
+          overwrite: true
           strip_components: 2
 
       - name: Executing remote ssh commands on my server
