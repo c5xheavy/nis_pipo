@@ -13,7 +13,7 @@ int main() {
   listen(server_fd, 128);
   for (;;) {
     int client_fd = accept(server_fd, NULL, NULL);
-    char response[] = "HTTP/1.1 200 OK\r\nContent-Length: 13\r\nConnection: close\r\n\r\nHello, world!";
+    char response[] = "HTTP/1.1 200 OK\r\nContent-Length: 13\r\nConnection: close\r\n\r\nHello, World!";
     for (int sent = 0; sent < sizeof(response); sent += send(client_fd, response+sent, sizeof(response)-sent, 0));
     close(client_fd);
   }

@@ -37,7 +37,7 @@ jobs:
           strip_components: 1
           overwrite: true
 
-      - name: Executing remote ssh commands on my server
+      - name: Execute remote ssh commands on my server
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
@@ -57,7 +57,7 @@ jobs:
           strip_components: 1
           overwrite: true
 
-      - name: Executing remote ssh commands on Petr's server
+      - name: Execute remote ssh commands on Petr's server
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.PETR_HOST }}
