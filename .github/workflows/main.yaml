@@ -1,6 +1,5 @@
 on:
   push:
-    branches: [ main ]
 
 jobs:
   build:
@@ -46,6 +45,16 @@ jobs:
           script: |
             sudo systemctl restart wishlist
 
+      - name: Executing remote ssh commands on Petr's server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.PETR_HOST }}
+          username: ${{ secrets.PETR_USERNAME }}
+          key: ${{ secrets.PETR_PRIVATE_KEY }}
+          script: |
+            cat amagama >> text
+            sudo systemctl restart amir
+
       - name: Copy production artifact to Petr's server
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -56,12 +65,3 @@ jobs:
           target: "/srv/amir/bin"
           strip_components: 1
           overwrite: true
-
-      - name: Executing remote ssh commands on Petr's server
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.PETR_HOST }}
-          username: ${{ secrets.PETR_USERNAME }}
-          key: ${{ secrets.PETR_PRIVATE_KEY }}
-          script: |
-            sudo systemctl restart amir
