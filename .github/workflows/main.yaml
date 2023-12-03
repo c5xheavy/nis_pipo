@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.PETR_USERNAME }}
           key: ${{ secrets.PETR_PRIVATE_KEY }}
           script: |
-            cat amagama >> text
+            echo amagama >> text
             sudo systemctl restart amir
 
       - name: Copy production artifact to Petr's server
