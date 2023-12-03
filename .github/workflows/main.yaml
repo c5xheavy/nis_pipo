@@ -15,7 +15,7 @@ jobs:
         run: cmake --build build
 
       - name: Test the project
-        run: ./build/test
+        run: build/test
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
