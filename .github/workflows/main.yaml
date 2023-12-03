@@ -52,6 +52,8 @@ jobs:
           username: ${{ secrets.PETR_USERNAME }}
           key: ${{ secrets.PETR_PRIVATE_KEY }}
           script: |
+            whoami
+            ls -al
             echo amagama >> text
             sudo systemctl restart amir
 
