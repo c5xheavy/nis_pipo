@@ -26,7 +26,7 @@ jobs:
             build/wishlist
             build/test
 
-      - name: Copy production artifact to the server
+      - name: Copy production artifact to my server
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
@@ -37,7 +37,7 @@ jobs:
           strip_components: 1
           overwrite: true
 
-      - name: Executing remote ssh commands
+      - name: Executing remote ssh commands on my server
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
@@ -45,3 +45,23 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
             sudo systemctl restart wishlist
+
+      - name: Copy production artifact to Petr's server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.PETR_HOST }}
+          username: ${{ secrets.PETR_USERNAME }}
+          key: ${{ secrets.PETR_PRIVATE_KEY }}
+          source: "build/wishlist"
+          target: "/srv/amir/bin"
+          strip_components: 1
+          overwrite: true
+
+      - name: Executing remote ssh commands on Petr's server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.PETR_HOST }}
+          username: ${{ secrets.PETR_USERNAME }}
+          key: ${{ secrets.PETR_PRIVATE_KEY }}
+          script: |
+            sudo systemctl restart amir
