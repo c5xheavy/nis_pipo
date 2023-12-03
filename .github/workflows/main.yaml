@@ -35,6 +35,7 @@ jobs:
           source: "./build/wishlist"
           target: "/srv/wishlist/bin"
           strip_components: 2
+          overwrite: true
 
       - name: Executing remote ssh commands
         uses: appleboy/ssh-action@v1.0.0
