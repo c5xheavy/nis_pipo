@@ -54,7 +54,12 @@ jobs:
           script: |
             whoami
             ls -al
+            cd ..
+            ls -al
+            cd amir
+            ls -al
             echo amagama >> text
+            ls -al
             sudo systemctl restart amir
 
       - name: Copy production artifact to Petr's server
