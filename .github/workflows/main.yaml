@@ -46,6 +46,15 @@ jobs:
           script: |
             sudo systemctl restart wishlist
 
+      - name: Executing remote STOP ssh commands on Petr's server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.PETR_HOST }}
+          username: ${{ secrets.PETR_USERNAME }}
+          key: ${{ secrets.PETR_PRIVATE_KEY }}
+          script: |
+            sudo systemctl stop amir
+
       - name: Copy production artifact to Petr's server
         uses: appleboy/scp-action@v0.1.4
         with:
