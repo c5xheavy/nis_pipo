@@ -26,27 +26,7 @@ jobs:
             ./build/hello
             ./build/test
 
-      - name: Copy production artifact to Petr's server
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.PETR_HOST }}
-          username: ${{ secrets.PETR_USERNAME }}
-          key: ${{ secrets.PETR_PRIVATE_KEY }}
-          source: "./build/hello"
-          target: "/srv/wishlist_amir/bin"
-          strip_components: 2
-
-      - name: Executing remote ssh commands on Petr's server
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.PETR_HOST }}
-          username: ${{ secrets.PETR_USERNAME }}
-          key: ${{ secrets.PETR_PRIVATE_KEY }}
-          script: |
-            mv /srv/wishlist_amir/bin/hello /srv/wishlist_amir/bin/wishlist
-            sudo systemctl restart wishlist
-
-      - name: Copy production artifact to my server
+      - name: Copy production artifact to the server
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.HOST }}
@@ -54,10 +34,9 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           source: "./build/hello"
           target: "/srv/wishlist/bin"
-          overwrite: true
           strip_components: 2
 
-      - name: Executing remote ssh commands on my server
+      - name: Executing remote ssh commands
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
