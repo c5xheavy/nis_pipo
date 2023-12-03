@@ -15,15 +15,15 @@ jobs:
         run: cmake --build build
 
       - name: Test the project
-        run: build/test
+        run: ./build/test
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
           name: artifacts-result
           path: |
-            build/wishlist
-            build/test
+            ./build/wishlist
+            ./build/test
 
       - name: Copy production artifact to the server
         uses: appleboy/scp-action@v0.1.4
