@@ -26,7 +26,7 @@ jobs:
             build/wishlist
             build/test
 
-      - name: Execute remote ssh STOP command on my server
+      - name: Execute remote ssh systemctl stop command on my server
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
@@ -46,16 +46,16 @@ jobs:
           strip_components: 1
           overwrite: true
 
-      - name: Execute remote ssh RESTART command on my server
+      - name: Execute remote ssh systemctl start command on my server
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            sudo systemctl restart amir_wishlist
+            sudo systemctl start amir_wishlist
 
-      - name: Execute remote ssh STOP command on Petr's server
+      - name: Execute remote ssh systemctl stop command on Petr's server
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.PETR_HOST }}
@@ -75,7 +75,7 @@ jobs:
           strip_components: 1
           overwrite: true
 
-      - name: Execute remote ssh RESTART command on Petr's server
+      - name: Execute remote ssh systemctl restart command on Petr's server
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.PETR_HOST }}
