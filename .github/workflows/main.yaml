@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           source: "build/wishlist"
-          target: "/srv/wishlist/bin"
+          target: "/srv/amir_wishlist/bin"
           strip_components: 1
           overwrite: true
 
