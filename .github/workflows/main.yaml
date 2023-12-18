@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            sudo systemctl stop wishlist
+            sudo systemctl stop amir_wishlist
 
       - name: Copy production artifact to my server
         uses: appleboy/scp-action@v0.1.4
@@ -53,7 +53,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           script: |
-            sudo systemctl restart wishlist
+            sudo systemctl restart amir_wishlist
 
       - name: Execute remote ssh STOP command on Petr's server
         uses: appleboy/ssh-action@v1.0.0
